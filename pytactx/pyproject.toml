@@ -1,0 +1,9 @@
+[tool]
+[tool.poetry]
+authors = ["Julien ARNE <julien@jusdeliens.com>"]
+name = "root"
+description = ""
+version = "0.0.0"
+[tool.poetry.dependencies]
+paho-mqtt = "^1.5"
+python = "^3.8"
