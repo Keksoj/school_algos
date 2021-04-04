@@ -28,3 +28,12 @@ class Path:
         for town in self.towns:
             town.display()
         print("    path length:", self.length)
+
+    def get_length(self):
+        """
+        This shouldn't be neccessary but writing
+            path.length
+        in the lib gives the error:
+            AttributeError: 'float' object has no attribute 'length'
+        """
+        return self.length

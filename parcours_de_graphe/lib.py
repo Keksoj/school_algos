@@ -33,7 +33,7 @@ class Graph:
         if verbose:
             self.display_town_dictonary()
 
-    def measure_exploring_time(self, verbose_path_finding, verbose_measuring):
+    def brute_force_resolution(self, verbose_path_finding, verbose_measuring):
         """
         This procedures analizes how much computing time is needed to explore all paths
         for a graph with n towns
@@ -43,13 +43,10 @@ class Graph:
         explored_paths = []
         startTime = perf_counter_ns()
 
-        # get the first town to start with
-        first_town = list(self.town_dictionary.values())[0]
-
         self.explore_all_paths(
-            first_town,
-            self.town_dictionary,
-            self.current_path,
+            copy.deepcopy(list(self.town_dictionary.values())[0]),
+            copy.deepcopy(self.town_dictionary),
+            copy.deepcopy(self.current_path),
             explored_paths,
             verbose_path_finding
         )
@@ -60,8 +57,24 @@ class Graph:
         elapsedTimeLog = math.log(elapsedTime)
 
         print(
-            "The graph with", len(self.town_dictionary), "towns.",
-            "it took", elapsedTime, "nanoseconds:", elapsedTime/1000000000, "seconds")
+            "We have found", len(self.all_paths), "possible paths to link the",
+            len(self.town_dictionary), "towns.",
+            "it took", elapsedTime, "nanoseconds:", elapsedTime/1000000000, "seconds"
+        )
+
+        # sort out the shortest path
+        # this is ugly because 
+        #               AttributeError: 'float' object has no attribute 'length'
+        shortest_path = self.all_paths[0]
+        shortest_path_length = shortest_path.get_length()
+        for path in self.all_paths:
+            if path.get_length() < shortest_path_length:
+                shortest_path = path
+                shortest_path_length = shortest_path.get_length()
+
+        print("\nHere is the shortest path:")
+        shortest_path.display()
+
         data = [len(self.town_dictionary), elapsedTime, elapsedTimeLog]
         return data
 
@@ -108,7 +121,6 @@ class Graph:
                   len(current_town_dictionary))
 
         # if all towns are unexplored, add the path to the list
-        print
         if (len(current_town_dictionary) == 0):
             list_of_explored_paths.append(current_path)
             if verbose:
@@ -116,8 +128,10 @@ class Graph:
                 current_path.display()
             return
 
+        # If they are still towns to explore,
         if (len(current_town_dictionary) != 0):
-            # Of all the unexploredGraph,
+
+            # iterate over the unexplored towns
             for town_key in current_town_dictionary.keys():
                 if verbose:
                     print("next town to explore:", town_key)
@@ -141,6 +155,7 @@ class Graph:
             town.display()
 
     def display_all_paths(self):
-        for i in range(len(self.all_paths) - 1):
+        print("\n=========== ALL PATHS FOUND =============")
+        for i in range(len(self.all_paths)):
             print("\npath_number", i)
             self.all_paths[i].display()
