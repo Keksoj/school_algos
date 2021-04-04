@@ -2,7 +2,7 @@
 
 On prends le fameux [travelling salesman problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem) et on implémente le problème en python.
 
-## La consigne
+## Brute force
 
 1. Entrer via input() le nombre de villes
 2. créer le graphe des n villes avec un dictionnaire
@@ -15,7 +15,7 @@ On prends le fameux [travelling salesman problem](https://en.wikipedia.org/wiki/
 5. Exécuter le programme en augmentant `n` et observer **le temps d'exécution**. Utilisez un tableur pour représenter l'évolution de `t` en fonction de `n`. _Quelle relation mathématique relie `n` et `t` de sorte que `t = f(n)` ?_
 
 
-## La récursivité 
+### La récursivité 
 
 Il fat faire une fonction récursive  du genre `parcourirLesVillesRestantes` qui deep-copiera la liste des villes restantes (ne pas muter en global !). Elle aura en paramètres:
 
@@ -23,7 +23,7 @@ Il fat faire une fonction récursive  du genre `parcourirLesVillesRestantes` qui
 - une liste de villes parcourues (le chemin).
 - une liste de villes non explorées
 
-## Faire un beau graphe
+### Faire un beau graphe
 
 Pour donner les données à libreoffice ou à excel on fait un csv qui s'appelle `times.csv`.
 Bien le vider à chaque fois:
@@ -31,3 +31,4 @@ Bien le vider à chaque fois:
     echo "" > times.csv
 
 Le graphe met en évidence que la courbe est exponentielle.
+
