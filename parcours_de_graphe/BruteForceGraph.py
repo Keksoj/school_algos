@@ -8,28 +8,23 @@ from pprint import pprint
 from Town import Town
 from Path import Path
 from time import perf_counter_ns
+from Graph import Graph
 
+class BruteForceGraph(Graph):
+    """
+    This child class of Graph is specialized to brute force all possible paths
+    """
 
-class Graph:
-
-    def __init__(self, howManyTowns, verbose):
+    def __init__(self, number_of_towns, verbose):
         """
         Constructs a graph with add many towns to the graph
-        args:
-            howManyTowns: the number of towns to add
-        properties:
-            town_dictonary: a dictionary, for instance {'paris', (0,0,false)}
+            current_path: the path currently exlpored
             all_paths: a list of possible paths
+
         """
-        self.number_of_towns = howManyTowns
-        town_dictionary = {}
-        for _ in range(howManyTowns):
-            town = Town()
-            town_dictionary[town.name] = town
-        self.town_dictionary = town_dictionary
-        self.all_paths = []
+        super().__init__(number_of_towns, verbose)
         self.current_path = Path()
-        self.current_path.display()
+        self.all_paths = []
         if verbose:
             self.display_town_dictonary()
 
@@ -149,10 +144,6 @@ class Graph:
                     verbose
                 )
 
-    def display_town_dictonary(self):
-        print("town_dictonary:")
-        for town in self.town_dictionary.values():
-            town.display()
 
     def display_all_paths(self):
         print("\n=========== ALL PATHS FOUND =============")
