@@ -26,15 +26,10 @@ Il fat faire une fonction récursive  du genre `parcourirLesVillesRestantes` qui
 ### Faire un beau graphe
 
 Pour donner les données à libreoffice ou à excel on fait un csv qui s'appelle `times.csv`.
-Bien le vider à chaque fois:
-
-    echo "" > times.csv
-
-Le graphe met en évidence que la courbe est exponentielle.
 
 
 ## La ville la plus proche
 
-Cet algorithme ne trouve pas le chemin le plus court, mais un chemin raisonablement court. Il va surtout beaucoup plus vite.
+Cet algorithme ne trouve pas le chemin le plus court, mais un chemin raisonablement court. Il nécessite surtout beaucoup moins d'opération.
 
 ![nearest_town_benchmark](nearest_town_benchmark.png)
