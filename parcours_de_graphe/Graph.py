@@ -54,8 +54,7 @@ class Graph:
             writer = csv.writer(file)
             row = ['number_of_towns', 'elapsed_time', 'elapsed_time_log']
             writer.writerow(row)
-            if verbose:
-                print(row)
+            print(row)
 
             go_on_testing = True
             number_of_towns = 3
@@ -66,7 +65,7 @@ class Graph:
 
                 # instantiate a graph and solve it for a given number of towns
                 self.refresh(number_of_towns)
-                self.solve(False)
+                self.solve(verbose)
 
                 # measure elapsed time
                 elapsedTime = perf_counter_ns() - startTime
@@ -75,11 +74,11 @@ class Graph:
                 # write into the file
                 data = [number_of_towns, elapsedTime, elapsedTimeLog]
                 writer.writerow(data)
-                if verbose:
-                    print(data)
+                print(data)
 
+                
                 number_of_towns += 1
 
                 # don't go of testing if an iteration takes more than 10 seconds
-                if elapsedTime > 10000000000:
+                if elapsedTime > 10000000000 or number_of_towns > 500:
                     go_on_testing = False

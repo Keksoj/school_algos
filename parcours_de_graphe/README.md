@@ -32,3 +32,9 @@ Bien le vider à chaque fois:
 
 Le graphe met en évidence que la courbe est exponentielle.
 
+
+## La ville la plus proche
+
+Cet algorithme ne trouve pas le chemin le plus court, mais un chemin raisonablement court. Il va surtout beaucoup plus vite.
+
+![nearest_town_benchmark](nearest_town_benchmark.png)

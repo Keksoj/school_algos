@@ -19,21 +19,21 @@ class BruteForceGraph(Graph):
     def __init__(self, number_of_towns, verbose):
         """
         Constructs a graph with add many towns to the graph
+        Additional properties
             current_path: the path currently exlpored
             all_paths: a list of possible paths
 
         """
         super().__init__(number_of_towns, verbose)
         self.current_path = Path()
-        self.name = "brute_force_graph"
+        self.name = "brute_force"
         self.all_paths = []
         if verbose:
             self.display_town_dictonary()
 
     def solve(self, verbose):
         """
-        This procedures analizes how much computing time is needed to explore all paths
-        for a graph with n towns
+        This procedures explores all possible paths
             verbose: boolean
         """
 
@@ -49,9 +49,9 @@ class BruteForceGraph(Graph):
         if verbose:
             self.display_all_paths()
 
-
         print(
-            "\nWe have found", len(self.all_paths), "possible paths to link the",
+            "\nWe have found", len(
+                self.all_paths), "possible paths to link the",
             len(self.town_dictionary), "towns.",
         )
 
@@ -67,7 +67,6 @@ class BruteForceGraph(Graph):
 
         print("Here is the shortest path:")
         shortest_path.display()
-
 
     def explore_all_paths(
         self,

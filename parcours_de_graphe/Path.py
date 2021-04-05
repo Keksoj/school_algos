@@ -20,7 +20,7 @@ class Path:
             distance = self.towns[len(self.towns) - 1].distance_to(town)
             self.length += distance
             if verbose:
-                print("distance to the town is:", distance)
+                print("The path is appended a town distant of:", distance)
         self.towns.append(town)
 
     def display(self):
