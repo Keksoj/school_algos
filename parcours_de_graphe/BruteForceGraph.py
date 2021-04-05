@@ -1,18 +1,19 @@
+from Graph import Graph
+from time import perf_counter_ns
+from Path import Path
+from Town import Town
+from pprint import pprint
 import random
 import string
 import copy
 import time
 import csv
 import math
-from pprint import pprint
-from Town import Town
-from Path import Path
-from time import perf_counter_ns
-from Graph import Graph
+
 
 class BruteForceGraph(Graph):
     """
-    This child class of Graph is specialized to brute force all possible paths
+    This child class of Graph is designed to brute force all possible paths
     """
 
     def __init__(self, number_of_towns, verbose):
@@ -24,11 +25,12 @@ class BruteForceGraph(Graph):
         """
         super().__init__(number_of_towns, verbose)
         self.current_path = Path()
+        self.name = "brute_force_graph"
         self.all_paths = []
         if verbose:
             self.display_town_dictonary()
 
-    def brute_force_resolution(self, verbose_path_finding, verbose_measuring):
+    def solve(self, verbose):
         """
         This procedures analizes how much computing time is needed to explore all paths
         for a graph with n towns
@@ -36,30 +38,26 @@ class BruteForceGraph(Graph):
         """
 
         explored_paths = []
-        startTime = perf_counter_ns()
-
         self.explore_all_paths(
             copy.deepcopy(list(self.town_dictionary.values())[0]),
             copy.deepcopy(self.town_dictionary),
             copy.deepcopy(self.current_path),
             explored_paths,
-            verbose_path_finding
+            verbose
         )
         self.all_paths = explored_paths
-        self.display_all_paths()
+        if verbose:
+            self.display_all_paths()
 
-        elapsedTime = perf_counter_ns() - startTime
-        elapsedTimeLog = math.log(elapsedTime)
 
         print(
-            "We have found", len(self.all_paths), "possible paths to link the",
+            "\nWe have found", len(self.all_paths), "possible paths to link the",
             len(self.town_dictionary), "towns.",
-            "it took", elapsedTime, "nanoseconds:", elapsedTime/1000000000, "seconds"
         )
 
         # sort out the shortest path
-        # this is ugly because 
-        #               AttributeError: 'float' object has no attribute 'length'
+        # this is ugly because
+        #     AttributeError: 'float' object has no attribute 'length'
         shortest_path = self.all_paths[0]
         shortest_path_length = shortest_path.get_length()
         for path in self.all_paths:
@@ -67,11 +65,9 @@ class BruteForceGraph(Graph):
                 shortest_path = path
                 shortest_path_length = shortest_path.get_length()
 
-        print("\nHere is the shortest path:")
+        print("Here is the shortest path:")
         shortest_path.display()
 
-        data = [len(self.town_dictionary), elapsedTime, elapsedTimeLog]
-        return data
 
     def explore_all_paths(
         self,
@@ -143,7 +139,6 @@ class BruteForceGraph(Graph):
                     list_of_explored_paths,
                     verbose
                 )
-
 
     def display_all_paths(self):
         print("\n=========== ALL PATHS FOUND =============")
