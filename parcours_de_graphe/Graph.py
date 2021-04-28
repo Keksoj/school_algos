@@ -15,11 +15,12 @@ class Graph:
         """
         Constructs a graph with add many towns to the graph
         args:
-            howManyTowns: the number of towns to add
-            name: the type of graph (for logging purposes)
+            number_of_towns: the number of towns to add
+            verbose: talk to me
         properties:
             town_dictonary: a dictionary, for instance {'paris', (0,0,false)}
         """
+        # populate the graph with towns
         self.refresh(number_of_towns)
         self.name = "Please_give_me_a_name"
         if verbose:
@@ -56,9 +57,9 @@ class Graph:
             writer.writerow(row)
             print(row)
 
-            go_on_testing = True
+            keep_testing = True
             number_of_towns = 3
-            while (go_on_testing):
+            while (keep_testing):
 
                 # sets the counter
                 startTime = perf_counter_ns()
@@ -76,9 +77,8 @@ class Graph:
                 writer.writerow(data)
                 print(data)
 
-                
                 number_of_towns += 1
 
                 # don't go of testing if an iteration takes more than 10 seconds
                 if elapsedTime > 10000000000 or number_of_towns > 500:
-                    go_on_testing = False
+                    keep_testing = False

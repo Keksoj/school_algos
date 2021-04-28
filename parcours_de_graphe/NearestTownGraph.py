@@ -30,7 +30,7 @@ class NearestTownGraph(Graph):
         """
         This procedure calls the hop_from() method recursively
         """
-        # we must clear the past from previous iterations
+        # we must clear the path from previous iterations
         self.path = Path()
 
         if verbose:
@@ -68,7 +68,7 @@ class NearestTownGraph(Graph):
         next_town = list(self.town_dictionary.values())[0]
 
 
-        # compare the distance to every town in the graph to find the smallest one
+        # compare the distance to every town in the graph to find the shortest one
         for town in self.town_dictionary.values():
             if verbose:
                 print("We consider as next_town:")
