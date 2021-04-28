@@ -10,7 +10,7 @@ class Town:
             x: int
             y: int
         """
-        self.name = randomString(10)
+        self.name = randomString(15)
         self.x = random.randint(0, 10)
         self.y = random.randint(0, 10)
 

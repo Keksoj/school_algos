@@ -13,7 +13,7 @@ class Graph:
 
     def __init__(self, number_of_towns, verbose):
         """
-        Constructs a graph with add many towns to the graph
+        Constructs a graph with so many towns to the graph
         args:
             number_of_towns: the number of towns to add
             verbose: talk to me
@@ -21,12 +21,12 @@ class Graph:
             town_dictonary: a dictionary, for instance {'paris', (0,0,false)}
         """
         # populate the graph with towns
-        self.refresh(number_of_towns)
+        self.populate(number_of_towns)
         self.name = "Please_give_me_a_name"
         if verbose:
             self.display_town_dictonary()
 
-    def refresh(self, number_of_towns):
+    def populate(self, number_of_towns):
         # creates a dictionary of all towns
         town_dictionary = {}
         for _ in range(number_of_towns):
@@ -65,7 +65,7 @@ class Graph:
                 startTime = perf_counter_ns()
 
                 # instantiate a graph and solve it for a given number of towns
-                self.refresh(number_of_towns)
+                self.populate(number_of_towns)
                 self.solve(verbose)
 
                 # measure elapsed time
