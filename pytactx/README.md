@@ -39,3 +39,10 @@ La propriété `voisin` de la classe `Pytactx.Agent` renvoie un dictionnaire du 
     }
 
 et on doit s'en servir pour trouver le voisin le plus vulnérable.
+
+## La course Pytactx
+
+[L'arène](https://jusdeliens.com/play/pytactx/)
+a changé apparemment. Ce n'est plus un damier mais un graphe de villes.
+
+
