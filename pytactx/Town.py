@@ -6,7 +6,7 @@ class Town:
     ( Paris, {'x': 29, 'y': 15, 'r': 4, 'l': {'Mantes-la-Jolie': 59, 'Versailles': 21}})
     """
 
-    def __init___(self, name, x, y, r, l):
+    def __init__(self, name, x, y, r, l):
         """
         r is the radius of the town, its size
         l is a dictionary of neigboring towns

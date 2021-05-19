@@ -32,7 +32,7 @@ def random_list_with_length(limit):
     
     return list
 
-def merge_sort(list):
+def fusion_sort(list):
     """
     find the min value, append to a list, rince and repeat
     """
